@@ -3,7 +3,7 @@ import { z } from "zod";
 
 export const serverEnv = createEnv({
   server: {
-    DATABASE_URL: z.url(),
+    DATABASE_URL: z.string().min(1),
     CLERK_SECRET_KEY: z.string().min(1),
   },
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
@@ -13,4 +13,5 @@ export const serverEnv = createEnv({
   // },
   // For Next.js >= 13.4.4, you can just reference process.env:
   experimental__runtimeEnv: process.env,
+  skipValidation: !!process.env.SKIP_ENV_VALIDATION,
 });

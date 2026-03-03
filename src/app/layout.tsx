@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/themes";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const figtree = Figtree({
   variable: "--font-sans",
@@ -38,7 +39,7 @@ export default function RootLayout({
           className={` ${figtree.variable} ${geistMono.variable} antialiased`}
         >
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            {children}
+            <TooltipProvider>{children}</TooltipProvider>
             <Toaster position="bottom-right" richColors />
           </ThemeProvider>
         </body>
