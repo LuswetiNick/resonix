@@ -3,9 +3,11 @@ import { Figtree, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadcn } from "@clerk/themes";
+import { TooltipProvider } from "@/components/animate-ui/components/animate/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
+
+// import { TooltipProvider } from "@/components/ui/tooltip";
 
 const figtree = Figtree({
   variable: "--font-sans",
