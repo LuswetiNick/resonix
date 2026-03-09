@@ -511,19 +511,15 @@ function HighlightItem<T extends React.ElementType>({
     "data-highlight": true,
   };
 
-  const propsHandlers = props as React.HTMLAttributes<HTMLDivElement>;
-
   const commonHandlers = hover
     ? {
         onMouseEnter: (e: React.MouseEvent<HTMLDivElement>) => {
           setActiveValue(childValue);
           element.props.onMouseEnter?.(e);
-          propsHandlers.onMouseEnter?.(e);
         },
         onMouseLeave: (e: React.MouseEvent<HTMLDivElement>) => {
           setActiveValue(null);
           element.props.onMouseLeave?.(e);
-          propsHandlers.onMouseLeave?.(e);
         },
       }
     : click
@@ -531,7 +527,6 @@ function HighlightItem<T extends React.ElementType>({
           onClick: (e: React.MouseEvent<HTMLDivElement>) => {
             setActiveValue(childValue);
             element.props.onClick?.(e);
-            propsHandlers.onClick?.(e);
           },
         }
       : {};

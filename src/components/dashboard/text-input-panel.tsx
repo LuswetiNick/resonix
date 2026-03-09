@@ -2,7 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { TEXT_MAX_LENGTH } from "@/constants/text-to-speech";
+import {
+  COST_PER_CHARACTER,
+  TEXT_MAX_LENGTH,
+} from "@/constants/text-to-speech";
 import { Button } from "../animate-ui/components/buttons/button";
 import { Disc3Icon } from "../animate-ui/icons/disc-3";
 import { UnplugIcon } from "../animate-ui/icons/unplug";
@@ -41,7 +44,7 @@ const TextInputPanel = () => {
             ) : (
               <>
                 <span className="tabular-nums">
-                  ${(text.length * 0.0003).toFixed(4)}
+                  ${(text.length * COST_PER_CHARACTER).toFixed(4)}
                 </span>{" "}
                 estimated
               </>

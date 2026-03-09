@@ -96,7 +96,7 @@ const AnimateIconContext = React.createContext<AnimateIconContextValue | null>(
 
 function useAnimateIconContext() {
   const context = React.useContext(AnimateIconContext);
-  if (!context) {
+  if (!context)
     return {
       controls: undefined,
       animation: "default",
@@ -109,7 +109,6 @@ function useAnimateIconContext() {
       persistOnAnimateEnd: undefined,
       delay: undefined,
     };
-  }
   return context;
 }
 
@@ -147,9 +146,7 @@ function AnimateIcon({
   const controls = useAnimation();
 
   const [localAnimate, setLocalAnimate] = React.useState<boolean>(() => {
-    if (animate === undefined || animate === false) {
-      return false;
-    }
+    if (animate === undefined || animate === false) return false;
     return delay <= 0;
   });
   const [currentAnimation, setCurrentAnimation] = React.useState<
@@ -210,26 +207,17 @@ function AnimateIcon({
   }, [localAnimate]);
 
   React.useEffect(() => {
-    if (animate === undefined) {
-      return;
-    }
+    if (animate === undefined) return;
     setCurrentAnimation(typeof animate === "string" ? animate : animation);
-    if (animate) {
-      startAnimation(animate as TriggerProp);
-    } else {
-      stopAnimation();
-    }
+    if (animate) startAnimation(animate as TriggerProp);
+    else stopAnimation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [animate]);
 
   React.useEffect(() => {
     return () => {
-      if (delayRef.current) {
-        clearTimeout(delayRef.current);
-      }
-      if (loopDelayRef.current) {
-        clearTimeout(loopDelayRef.current);
-      }
+      if (delayRef.current) clearTimeout(delayRef.current);
+      if (loopDelayRef.current) clearTimeout(loopDelayRef.current);
     };
   }, []);
 
@@ -253,14 +241,9 @@ function AnimateIcon({
   );
 
   React.useEffect(() => {
-    if (!animateOnView) {
-      return;
-    }
-    if (isInView) {
-      startAnimation(animateOnView);
-    } else {
-      stopAnimation();
-    }
+    if (!animateOnView) return;
+    if (isInView) startAnimation(animateOnView);
+    else stopAnimation();
   }, [isInView, animateOnView, startAnimation, stopAnimation]);
 
   React.useEffect(() => {
@@ -355,15 +338,13 @@ function AnimateIcon({
             return;
           }
           if (!activeRef.current) {
-            if (status !== "initial" && !persistOnAnimateEnd) {
+            if (status !== "initial" && !persistOnAnimateEnd)
               await startAnim("initial");
-            }
             return;
           }
         } else if (!activeRef.current) {
-          if (status !== "initial" && !persistOnAnimateEnd) {
+          if (status !== "initial" && !persistOnAnimateEnd)
             await startAnim("initial");
-          }
           return;
         }
         if (cancelledRef.current || gen !== runGenRef.current) {
@@ -397,35 +378,27 @@ function AnimateIcon({
   const handleMouseEnter = composeEventHandlers<React.MouseEvent<HTMLElement>>(
     childProps.onMouseEnter,
     () => {
-      if (animateOnHover) {
-        startAnimation(animateOnHover);
-      }
+      if (animateOnHover) startAnimation(animateOnHover);
     }
   );
 
   const handleMouseLeave = composeEventHandlers<React.MouseEvent<HTMLElement>>(
     childProps.onMouseLeave,
     () => {
-      if (animateOnHover || animateOnTap) {
-        stopAnimation();
-      }
+      if (animateOnHover || animateOnTap) stopAnimation();
     }
   );
 
   const handlePointerDown = composeEventHandlers<
     React.PointerEvent<HTMLElement>
   >(childProps.onPointerDown, () => {
-    if (animateOnTap) {
-      startAnimation(animateOnTap);
-    }
+    if (animateOnTap) startAnimation(animateOnTap);
   });
 
   const handlePointerUp = composeEventHandlers<React.PointerEvent<HTMLElement>>(
     childProps.onPointerUp,
     () => {
-      if (animateOnTap) {
-        stopAnimation();
-      }
+      if (animateOnTap) stopAnimation();
     }
   );
 
@@ -657,9 +630,8 @@ function getVariants<
       if (
         (animationType === "path" || animationType === "path-loop") &&
         key.includes("group")
-      ) {
+      )
         continue;
-      }
       result[key] = variant as T[Extract<keyof T, string>];
     }
   } else {

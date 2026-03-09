@@ -35,14 +35,12 @@ const QuickActionCard = ({
             {description}
           </p>
         </div>
-        <div className="flex w-full items-center justify-end">
-          <Button asChild className="w-fit text-xs" size="sm" variant="outline">
-            <Link href={href}>
-              <span className="text-xs">Try now</span>
-              <ArrowRightIcon animateOnHover className="size-3" />
-            </Link>
-          </Button>
-        </div>
+        <Button asChild className="w-fit" size="sm" variant="outline">
+          <Link href={href}>
+            Try now
+            <ArrowRightIcon animate className="size-3" />
+          </Link>
+        </Button>
       </div>
     </div>
   );

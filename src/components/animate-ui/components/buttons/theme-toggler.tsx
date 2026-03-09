@@ -4,6 +4,7 @@ import type { VariantProps } from "class-variance-authority";
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import type * as React from "react";
+import { useEffect, useState } from "react";
 import { buttonVariants } from "@/components/animate-ui/components/buttons/icon";
 import {
   type Resolved,
@@ -57,6 +58,23 @@ function ThemeTogglerButton({
   ...props
 }: ThemeTogglerButtonProps) {
   const { theme, resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <button
+        className={cn(buttonVariants({ variant, size, className }))}
+        data-slot="theme-toggler-button"
+        {...props}
+      >
+        <Sun />
+      </button>
+    );
+  }
 
   return (
     <ThemeTogglerPrimitive

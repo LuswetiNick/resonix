@@ -27,7 +27,9 @@
       "style": {
         "noNestedTernary": "off",
         "useConsistentTypeDefinitions": "off",
-        "noNonNullAssertion": "off"
+        "noNonNullAssertion": "off",
+        "useNumericSeparators": "off",
+        "useBlockStatements": "off"
       },
       "complexity": {
         "noForEach": "off",
@@ -40,6 +42,10 @@
       },
       "performance": {
         "noNamespaceImport": "off"
+      },
+      "a11y": {
+        "useFocusableInteractive": "off",
+        "useSemanticElements": "off"
       }
     },
     "domains": {
