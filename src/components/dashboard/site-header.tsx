@@ -11,6 +11,7 @@ import { SidebarTrigger } from "../animate-ui/components/radix/sidebar";
 import { CrossIcon } from "../animate-ui/icons/cross";
 import { MessageCircleHeartIcon } from "../animate-ui/icons/message-circle-heart";
 import { Separator } from "../ui/separator";
+import DashboardBreadcrumb from "./dashboard-breadcrumb";
 
 const SiteHeader = () => {
   return (
@@ -22,7 +23,7 @@ const SiteHeader = () => {
       <div className="flex items-center gap-2">
         <SidebarTrigger className="-ml-1" />
         <Separator className="mx-2 self-stretch" orientation="vertical" />
-        <p>TODO:Breadcrumb</p>
+        <DashboardBreadcrumb />
       </div>
 
       <div className="flex items-center gap-3">

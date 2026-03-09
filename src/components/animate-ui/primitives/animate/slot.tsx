@@ -25,9 +25,7 @@ function mergeRefs<T>(
 ): React.RefCallback<T> {
   return (node) => {
     refs.forEach((ref) => {
-      if (!ref) {
-        return;
-      }
+      if (!ref) return;
       if (typeof ref === "function") {
         ref(node);
       } else {
@@ -65,26 +63,20 @@ function Slot<T extends HTMLElement = HTMLElement>({
   ref,
   ...props
 }: SlotProps<T>) {
-  const childType = React.isValidElement(children) ? children.type : undefined;
-
   const isAlreadyMotion =
-    typeof childType === "object" &&
-    childType !== null &&
-    isMotionComponent(childType);
+    typeof children.type === "object" &&
+    children.type !== null &&
+    isMotionComponent(children.type);
 
-  const Base = React.useMemo(() => {
-    if (!childType) {
-      return null;
-    }
-    if (isAlreadyMotion) {
-      return childType as React.ElementType;
-    }
-    return motion.create(childType as React.ElementType);
-  }, [isAlreadyMotion, childType]);
+  const Base = React.useMemo(
+    () =>
+      isAlreadyMotion
+        ? (children.type as React.ElementType)
+        : motion.create(children.type as React.ElementType),
+    [isAlreadyMotion, children.type]
+  );
 
-  if (!(React.isValidElement(children) && Base)) {
-    return null;
-  }
+  if (!React.isValidElement(children)) return null;
 
   const { ref: childRef, ...childProps } = children.props as AnyProps;
 

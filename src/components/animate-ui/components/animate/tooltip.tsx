@@ -55,7 +55,7 @@ function TooltipContent({
         <motion.div layout={layout}>{children}</motion.div>
       </motion.div>
       <TooltipArrowPrimitive
-        className="size-3 fill-primary data-[side='left']:translate-x-[-1px] data-[side='right']:translate-x-[1px] data-[side='bottom']:translate-y-[1px] data-[side='top']:translate-y-[-1px]"
+        className="size-3 fill-primary data-[side='left']:-translate-x-px data-[side='right']:translate-x-px data-[side='bottom']:translate-y-px data-[side='top']:-translate-y-px"
         tipRadius={2}
       />
     </TooltipContentPrimitive>
