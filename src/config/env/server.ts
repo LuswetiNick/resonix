@@ -5,6 +5,10 @@ export const serverEnv = createEnv({
   server: {
     DATABASE_URL: z.string().min(1),
     CLERK_SECRET_KEY: z.string().min(1),
+    R2_ACCOUNT_ID: z.string().min(1),
+    R2_ACCESS_KEY_ID: z.string().min(1),
+    R2_SECRET_ACCESS_KEY: z.string().min(1),
+    R2_BUCKET_NAME: z.string().min(1),
   },
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
   // runtimeEnv: {
