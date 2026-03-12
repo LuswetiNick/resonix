@@ -6,6 +6,7 @@ import { Slider } from "@/components/ui/slider";
 import { sliders } from "@/data/sliders";
 import { useTypedAppFormContext } from "@/hooks/use-app-form";
 import { ttsFormOptions } from "./text-to-speech-form";
+import VoiceSelector from "./voice-selector";
 
 const SettingsPanelSettings = () => {
   const form = useTypedAppFormContext(ttsFormOptions);
@@ -13,10 +14,12 @@ const SettingsPanelSettings = () => {
 
   return (
     <>
-      <div className="border-b p-4">TODO:Voice selector</div>
+      <div className="border-b p-4">
+        <VoiceSelector />
+      </div>
 
       {/* Voice Adjustment Controls */}
-      <form className="flex-1 p-4">
+      <div className="flex-1 p-4">
         <FieldGroup className="gap-6">
           {sliders.map((slider) => (
             <form.Field key={slider.id} name={slider.id}>
@@ -45,7 +48,7 @@ const SettingsPanelSettings = () => {
             </form.Field>
           ))}
         </FieldGroup>
-      </form>
+      </div>
     </>
   );
 };
