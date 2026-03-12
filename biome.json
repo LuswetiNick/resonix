@@ -22,7 +22,8 @@
         "noUnknownAtRules": "off",
         "noDocumentCookie": "off",
         "noExplicitAny": "off",
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "off",
+        "noEmptyBlockStatements": "off"
       },
       "style": {
         "noNestedTernary": "off",

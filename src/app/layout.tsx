@@ -6,6 +6,7 @@ import { shadcn } from "@clerk/themes";
 import { TooltipProvider } from "@/components/animate-ui/components/animate/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { TRPCReactProvider } from "@/server/trpc/client";
 
 const figtree = Figtree({
   variable: "--font-sans",
@@ -38,16 +39,18 @@ export default function RootLayout({
         },
       }}
     >
-      <html lang="en" suppressHydrationWarning>
-        <body
-          className={` ${figtree.variable} ${geistMono.variable} antialiased`}
-        >
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            <TooltipProvider>{children}</TooltipProvider>
-            <Toaster position="bottom-right" richColors />
-          </ThemeProvider>
-        </body>
-      </html>
+      <TRPCReactProvider>
+        <html lang="en" suppressHydrationWarning>
+          <body
+            className={` ${figtree.variable} ${geistMono.variable} antialiased`}
+          >
+            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+              <TooltipProvider>{children}</TooltipProvider>
+              <Toaster position="bottom-right" richColors />
+            </ThemeProvider>
+          </body>
+        </html>
+      </TRPCReactProvider>
     </ClerkProvider>
   );
 }
