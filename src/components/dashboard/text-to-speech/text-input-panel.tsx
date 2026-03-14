@@ -8,7 +8,11 @@ import {
   TEXT_MAX_LENGTH,
 } from "@/constants/text-to-speech";
 import { useTypedAppFormContext } from "@/hooks/use-app-form";
+import { VoiceSelectorButton } from "../voice-selector-btn";
 import GenerateButton from "./generate-button";
+import { HistoryDrawer } from "./history-drawer";
+import { PromptSuggestions } from "./prompt-suggestions";
+import { SettingsDrawer } from "./settings-drawer";
 import { ttsFormOptions } from "./text-to-speech-form";
 
 const TextInputPanel = () => {
@@ -19,7 +23,7 @@ const TextInputPanel = () => {
   const isValid = useStore(form.store, (s) => s.isValid);
   return (
     <div className="flex h-full min-h-0 flex-1 flex-col">
-      <div className="relative min-h-0 flex-1 bg-background p-1">
+      <div className="relative min-h-40 flex-1 bg-background p-1">
         <form.Field name="text">
           {(field) => (
             <Textarea
@@ -37,6 +41,12 @@ const TextInputPanel = () => {
       </div>
       <div className="shrink-0 p-4 lg:p-6">
         <div className="flex flex-col gap-3 lg:hidden">
+          <div className="flex items-center gap-2">
+            <SettingsDrawer>
+              <VoiceSelectorButton />
+            </SettingsDrawer>
+            <HistoryDrawer />
+          </div>
           <GenerateButton
             className="w-full"
             disabled={isSubmitting}
@@ -72,10 +82,9 @@ const TextInputPanel = () => {
           </div>
         ) : (
           <div className="hidden lg:block">
-            {/* <PromptSuggestions
-              onSelect={(prompt) => form.setFieldValue("text", prompt)}
-            /> */}
-            prompt suggestions
+            <PromptSuggestions
+              onSelectAction={(prompt) => form.setFieldValue("text", prompt)}
+            />
           </div>
         )}
       </div>

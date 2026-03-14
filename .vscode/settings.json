@@ -49,5 +49,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",
     "source.organizeImports.biome": "explicit"
-  }
+  },
+  "python-envs.defaultEnvManager": "ms-python.python:system"
 }
