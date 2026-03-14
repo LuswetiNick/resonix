@@ -13,7 +13,7 @@ export function HistoryDrawer() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button size="sm" variant="outline">
+        <Button aria-label="Open history" size="sm" variant="outline">
           <History className="size-4" />
         </Button>
       </DrawerTrigger>

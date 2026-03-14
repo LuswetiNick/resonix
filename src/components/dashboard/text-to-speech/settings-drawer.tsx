@@ -24,7 +24,7 @@ export function SettingsDrawer({
     <Drawer onOpenChange={onOpenChange} open={open}>
       {children ?? (
         <DrawerTrigger asChild>
-          <Button size="sm" variant="outline">
+          <Button aria-label="Open settings" size="sm" variant="outline">
             <Settings className="size-4" />
           </Button>
         </DrawerTrigger>
