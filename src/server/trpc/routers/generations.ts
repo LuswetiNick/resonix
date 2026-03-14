@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/nextjs";
 import { TRPCError } from "@trpc/server";
 import z from "zod";
 import { TEXT_MAX_LENGTH } from "@/constants/text-to-speech";
@@ -84,6 +85,11 @@ export const generationsRouter = createTRPCRouter({
         },
         parseAs: "arrayBuffer",
       });
+      Sentry.logger.info("Generation started", {
+        orgId: ctx.orgId,
+        voiceId: input.voiceId,
+        textLength: input.text.length,
+      });
       if (error) {
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
@@ -128,6 +134,11 @@ export const generationsRouter = createTRPCRouter({
           data: {
             r2ObjectKey,
           },
+        });
+
+        Sentry.logger.info("Audio generated", {
+          orgId: ctx.orgId,
+          generationId: generation.id,
         });
       } catch {
         if (generationId) {

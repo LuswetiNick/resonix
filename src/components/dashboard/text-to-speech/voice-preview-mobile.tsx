@@ -62,7 +62,7 @@ export function VoicePreviewMobile({
     if (isPlaying) {
       audio.pause();
     } else {
-      audio.play();
+      audio.play().catch(() => {});
     }
   };
 
