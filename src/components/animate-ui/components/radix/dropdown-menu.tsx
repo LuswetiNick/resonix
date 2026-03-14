@@ -57,7 +57,7 @@ function DropdownMenuContent({
   return (
     <DropdownMenuContentPrimitive
       className={cn(
-        "z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-y-auto overflow-x-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md outline-none",
+        "z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-32 origin-(--radix-dropdown-menu-content-transform-origin) overflow-y-auto overflow-x-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md outline-none",
         className
       )}
       sideOffset={sideOffset}
@@ -99,7 +99,7 @@ function DropdownMenuItem({
     >
       <DropdownMenuItemPrimitive
         className={cn(
-          "data-[variant=destructive]:*:[svg]:!text-destructive relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden focus:text-accent-foreground data-[disabled=true]:pointer-events-none data-[inset]:pl-8 data-[variant=destructive]:text-destructive data-[disabled=true]:opacity-50 data-[variant=destructive]:focus:text-destructive [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+          "relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden focus:text-accent-foreground data-[disabled=true]:pointer-events-none data-inset:pl-8 data-[variant=destructive]:text-destructive data-[disabled=true]:opacity-50 data-[variant=destructive]:focus:text-destructive [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 data-[variant=destructive]:*:[svg]:text-destructive!",
           className
         )}
         data-inset={inset}
@@ -192,7 +192,7 @@ function DropdownMenuLabel({
   return (
     <DropdownMenuLabelPrimitive
       className={cn(
-        "px-2 py-1.5 font-medium text-sm data-[inset]:pl-8",
+        "px-2 py-1.5 font-medium text-sm data-inset:pl-8",
         className
       )}
       data-inset={inset}
@@ -253,8 +253,8 @@ function DropdownMenuSubTrigger({
     <DropdownMenuHighlightItemPrimitive disabled={disabled}>
       <DropdownMenuSubTriggerPrimitive
         className={cn(
-          "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-hidden focus:text-accent-foreground data-[inset]:pl-8 data-[state=open]:text-accent-foreground",
-          "[&_[data-slot=chevron]]:transition-transform [&_[data-slot=chevron]]:duration-300 [&_[data-slot=chevron]]:ease-in-out data-[state=open]:[&_[data-slot=chevron]]:rotate-90",
+          "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-hidden focus:text-accent-foreground data-inset:pl-8 data-[state=open]:text-accent-foreground",
+          "data-[state=open]:**:data-[slot=chevron]:rotate-90 **:data-[slot=chevron]:transition-transform **:data-[slot=chevron]:duration-300 **:data-[slot=chevron]:ease-in-out",
           className
         )}
         data-inset={inset}
@@ -277,7 +277,7 @@ function DropdownMenuSubContent({
   return (
     <DropdownMenuSubContentPrimitive
       className={cn(
-        "z-50 min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg outline-none",
+        "z-50 min-w-32 origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-lg outline-none",
         className
       )}
       {...props}

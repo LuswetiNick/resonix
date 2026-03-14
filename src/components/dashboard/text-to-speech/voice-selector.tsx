@@ -1,5 +1,6 @@
 "use client";
 import { useStore } from "@tanstack/react-form";
+import { useEffect } from "react";
 import { Field, FieldLabel } from "@/components/ui/field";
 import {
   Select,
@@ -23,8 +24,14 @@ const VoiceSelector = () => {
   const voiceId = useStore(form.store, (s) => s.values.voiceId);
   const isSubmitting = useStore(form.store, (s) => s.isSubmitting);
 
+  const fallbackVoiceId = voices[0]?.id ?? "";
   const selectedVoice = voices.find((v) => v.id === voiceId);
   const hasMissingSelectedVoice = Boolean(voiceId) && !selectedVoice;
+  useEffect(() => {
+    if (hasMissingSelectedVoice && fallbackVoiceId) {
+      form.setFieldValue("voiceId", fallbackVoiceId);
+    }
+  }, [fallbackVoiceId, form, hasMissingSelectedVoice]);
   const currentVoice = selectedVoice
     ? selectedVoice
     : hasMissingSelectedVoice

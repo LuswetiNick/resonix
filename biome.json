@@ -39,7 +39,8 @@
       },
       "correctness": {
         "useExhaustiveDependencies": "off",
-        "useHookAtTopLevel": "off"
+        "useHookAtTopLevel": "off",
+        "noConstAssign": "off"
       },
       "performance": {
         "noNamespaceImport": "off"

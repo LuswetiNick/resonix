@@ -9,6 +9,8 @@ export const serverEnv = createEnv({
     R2_ACCESS_KEY_ID: z.string().min(1),
     R2_SECRET_ACCESS_KEY: z.string().min(1),
     R2_BUCKET_NAME: z.string().min(1),
+    CHATTERBOX_API_KEY: z.string().min(1),
+    CHATTERBOX_API_URL: z.url(),
   },
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
   // runtimeEnv: {

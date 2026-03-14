@@ -40,11 +40,13 @@ const DashboardBreadcrumb = () => {
 
           return (
             <Fragment key={href}>
-              <BreadcrumbItem>
+              <BreadcrumbItem className="max-w-[120px] sm:max-w-none">
                 {isLast ? (
-                  <BreadcrumbPage>{label}</BreadcrumbPage>
+                  <BreadcrumbPage className="truncate">{label}</BreadcrumbPage>
                 ) : (
-                  <BreadcrumbLink href={href}>{label}</BreadcrumbLink>
+                  <BreadcrumbLink className="truncate" href={href}>
+                    {label}
+                  </BreadcrumbLink>
                 )}
               </BreadcrumbItem>
               {!isLast && <BreadcrumbSeparator />}
